@@ -1,8 +1,7 @@
-// src/app/breed/[slug].js
 'use client';
 
-import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 
 export default function BreedImages() {
   const { slug } = useParams();
@@ -10,27 +9,24 @@ export default function BreedImages() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!slug) return;
-    fetch(`https://dog.ceo/api/breed/${slug}/images`)
+    fetch(`https://dog.ceo/api/breed/${slug.toLowerCase()}/images`)
       .then((res) => res.json())
       .then((data) => {
-        setImages(data.message.slice(0, 10)); // Show top 10 images
+        setImages(data.message); 
         setLoading(false);
       });
   }, [slug]);
 
-  if (loading) return <div className="p-4 text-xl">Loading images...</div>;
-
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4 capitalize">Images of {slug}</h1>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {images.map((img, idx) => (
+      <h1 className="text-2xl font-bold mb-4 capitalize">{slug} Images</h1>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {images.map((imgUrl, index) => (
           <img
-            key={idx}
-            src={img}
-            alt={`${slug} dog`}
-            className="w-full h-48 object-cover rounded-xl shadow-md"
+            key={index}
+            src={imgUrl}
+            alt={`${slug} image`}
+            className="w-full h-48 object-cover rounded-xl shadow"
           />
         ))}
       </div>
