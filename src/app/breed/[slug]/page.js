@@ -25,9 +25,8 @@ export default function BreedImages() {
           <img
             key={index}
             src={imgUrl}
-            alt={`${slug} image`}
-            className="w-full h-48 object-cover rounded-xl shadow"
-          />
+            alt={`${slug} image`} 
+            className="w-full h-48 object-cover rounded-xl shadow"/>
         ))}
       </div>
     </div>

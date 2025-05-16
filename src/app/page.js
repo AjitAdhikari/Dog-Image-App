@@ -15,8 +15,7 @@ export default function BreedList() {
         setLoading(false);
       });
   }, []);
-
-
+  
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">List of Breed</h1>
@@ -25,8 +24,7 @@ export default function BreedList() {
           <li key={breed}>
             <Link
               href={`/breed/${breed}`}
-              className="block p-4 bg-blue-100 hover:bg-blue-300 rounded-xl text-center font-semibold capitalize"
-            >
+              className="block p-4 bg-blue-100 hover:bg-blue-300 rounded-xl text-center font-semibold capitalize">
               {breed}
             </Link>
           </li>
